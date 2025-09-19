@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase + Cloudinary Data Collection</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Registration Form -->
+    <div id="registerPage">
+      <h2>Register</h2>
+      <input type="email" id="regEmail" placeholder="Email">
+      <input type="password" id="regPassword" placeholder="Password">
+      <button onclick="register()">Register</button>
+      <p>Already have an account? <a href="#" onclick="showLoginPage()">Login here</a></p>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginPage" style="display:none">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Email">
+      <input type="password" id="loginPassword" placeholder="Password">
+      <button onclick="login()">Login</button>
+      <p>Don’t have an account? <a href="#" onclick="showRegisterPage()">Register here</a></p>
+    </div>
+
+    <!-- Data Collection Page -->
+    <div id="dataPage" style="display:none">
+      <h2>Data Collection</h2>
+      <select id="dataType" onchange="toggleInput()">
+        <option value="text">Text</option>
+        <option value="image">Image</option>
+        <option value="video">Video</option>
+      </select>
+
+      <div id="inputArea">
+        <input type="text" id="textInput" placeholder="Enter text">
+        <input type="file" id="fileInput" accept="image/*,video/*" style="display:none">
+      </div>
+      <button onclick="saveData()">Save Data</button>
+
+      <h3>Status: <span id="status">Logged in</span></h3>
+      <h3>Saved Data:</h3>
+      <div id="dataList"></div>
+      <button onclick="logout()">Logout</button>
+    </div>
+
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <!-- Firebase Config -->
+  <script src="firebase.js"></script>
+
+
+  <!-- App Logic -->
+  <script src="script1.js"></script>
+
+</body>
+</html>
